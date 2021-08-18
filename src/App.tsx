@@ -1,24 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { useStyles } from './styles';
+import DropdownMenu from './components/dropdownMenu/component';
+import Countries from './components/countries/component';
+import Continents from './components/continents/component';
 
 function App() {
+  const classes = useStyles();
+  const [region, setRegion] = useState([]);
+  const [country, setCountry] = useState(null);
+  const [countryInfo, setCountryInfo] = useState([]);
+
+  useEffect(() => {
+    if (country) {
+      fetch(`https://corona.lmao.ninja/v2/countries/${country}?yesterday&strict&query`)
+        .then((res) => res.json())
+        .then((out) => {
+          setCountryInfo(out);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    }
+  }, [country]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+            Covid Tracker
+          </Typography>
+          <DropdownMenu
+            region={region}
+            setRegion={setRegion}
+            country={country}
+            setCountry={setCountry}
+          />
+        </Toolbar>
+      </AppBar>
+      <div>
+        {country ? (
+          <Countries country={countryInfo} />
+        ) : region[1] === 'country' ? (
+          <Countries country={region[0]} />
+        ) : (
+          <Continents continent={region[0]} setCountry={setCountry} />
+        )}
+      </div>
     </div>
   );
 }
