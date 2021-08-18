@@ -1,4 +1,4 @@
-import { Avatar, Card, CardMedia, Grid } from '@material-ui/core';
+import { Card, CardMedia, Grid } from '@material-ui/core';
 import React from 'react';
 import CardDetails from '../card/component';
 import Table from '@material-ui/core/Table';
@@ -8,18 +8,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
 
 import CardContent from '@material-ui/core/CardContent';
+import { useStyles } from './styles';
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-  media: {
-    height: 70,
-  },
-});
 const Countries = ({ country }: any) => {
   const classes = useStyles();
 

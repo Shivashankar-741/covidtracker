@@ -34,12 +34,7 @@ function App() {
           <Typography variant="h6" className={classes.title}>
             Covid Tracker
           </Typography>
-          <DropdownMenu
-            region={region}
-            setRegion={setRegion}
-            country={country}
-            setCountry={setCountry}
-          />
+          <DropdownMenu setRegion={setRegion} setCountry={setCountry} />
         </Toolbar>
       </AppBar>
       <div>
