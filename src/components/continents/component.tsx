@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useStyles } from './styles';
+import Typography from '@material-ui/core/Typography';
 
 const Continents = ({ continent, setCountry }: any) => {
   const classes = useStyles();
@@ -21,25 +22,27 @@ const Continents = ({ continent, setCountry }: any) => {
       <h1 style={{ padding: '10px' }}>{continent ? continent.continent : ''}</h1>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={3}>
-          <CardDetails type="cases" count={continent?.cases} />
+          <CardDetails type="Total cases" count={continent?.cases} />
         </Grid>
         <Grid item xs={12} sm={12} md={3}>
-          <CardDetails type="deaths" count={continent?.deaths} />{' '}
+          <CardDetails type="Deaths" count={continent?.deaths} />{' '}
         </Grid>
         <Grid item xs={12} sm={12} md={3}>
-          <CardDetails type="active" count={continent?.active} />
+          <CardDetails type="Active" count={continent?.active} />
         </Grid>
         <Grid item xs={12} sm={12} md={3}>
-          <CardDetails type="recovered" count={continent?.recovered} />
+          <CardDetails type="Recovered" count={continent?.recovered} />
         </Grid>
       </Grid>
-      <div>
+      <div style={{ margin: '25px 0' }}>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>
-                  Countries {continent ? `under ${continent.continent} continent` : ''}
+                  <Typography variant="h4" component="h1">
+                    Countries {continent ? `under ${continent.continent} continent` : ''}
+                  </Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -52,7 +55,9 @@ const Continents = ({ continent, setCountry }: any) => {
                     component="th"
                     scope="row"
                   >
-                    {c}
+                    <Typography variant="h5" component="h1">
+                      {c}
+                    </Typography>
                   </TableCell>
                 </TableRow>
               ))}

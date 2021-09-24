@@ -5,13 +5,32 @@ import { useStyles } from './styles';
 
 const CardDetails = ({ type, count }: any) => {
   const classes = useStyles();
+
+  let color;
+  switch (type) {
+    case 'Total cases':
+      color = 'orange';
+      break;
+    case 'Deaths':
+      color = 'red';
+      break;
+    case 'Active':
+      color = 'rgb(165 55 15)';
+      break;
+    case 'Recovered':
+      color = 'green';
+      break;
+    default:
+      break;
+  }
+
   return (
     <Card className={classes.root}>
-      <CardContent>
-        <Typography variant="h5" component="h2">
+      <CardContent style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+        <Typography variant="h4" component="h1">
           {type}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography variant="h3" className={classes.pos} style={{ color }}>
           {count}
         </Typography>
       </CardContent>

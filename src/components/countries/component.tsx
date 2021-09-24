@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 import CardContent from '@material-ui/core/CardContent';
 import { useStyles } from './styles';
@@ -19,7 +20,7 @@ const Countries = ({ country }: any) => {
     <div style={{ padding: '20px' }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={2}>
-          <Card>
+          {/* <Card>
             <CardContent>
               <CardMedia
                 className={classes.media}
@@ -27,33 +28,42 @@ const Countries = ({ country }: any) => {
                 title="Flag"
               />
             </CardContent>
-          </Card>
+          </Card> */}
+          <div>
+            <img src={country?.countryInfo?.flag} alt="Flag" width="100%" height="100%" />
+          </div>
         </Grid>
         <Grid item xs={12} sm={12} md={2}>
-          <CardDetails type="cases" count={country?.cases} />
+          <CardDetails type="Total cases" count={country?.cases} />
         </Grid>
         <Grid item xs={12} sm={12} md={2}>
-          <CardDetails type="deaths" count={country?.deaths} />{' '}
+          <CardDetails type="Deaths" count={country?.deaths} />{' '}
         </Grid>
         <Grid item xs={12} sm={12} md={3}>
-          <CardDetails type="active" count={country?.active} />
+          <CardDetails type="Active" count={country?.active} />
         </Grid>
         <Grid item xs={12} sm={12} md={3}>
-          <CardDetails type="recovered" count={country?.recovered} />
+          <CardDetails type="Recovered" count={country?.recovered} />
         </Grid>
       </Grid>
-      <div>
+      <div style={{ margin: '15px 0' }}>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Country</TableCell>
+                <TableCell>
+                  <Typography variant="h4" component="h1">
+                    Country{' '}
+                  </Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
                 <TableCell component="th" scope="row">
-                  {country.country}
+                  <Typography variant="h5" component="h1">
+                    {country.country}
+                  </Typography>
                 </TableCell>
               </TableRow>
             </TableBody>
