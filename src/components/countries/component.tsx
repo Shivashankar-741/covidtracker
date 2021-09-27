@@ -1,4 +1,4 @@
-import { Card, CardMedia, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React from 'react';
 import CardDetails from '../card/component';
 import Table from '@material-ui/core/Table';
@@ -9,8 +9,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-
-import CardContent from '@material-ui/core/CardContent';
 import { useStyles } from './styles';
 
 const Countries = ({ country }: any) => {
